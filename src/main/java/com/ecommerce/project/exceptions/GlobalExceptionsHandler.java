@@ -1,3 +1,6 @@
+//Updated Global Exception Handler for E-commerce Project
+// This code handles various exceptions that may occur in the application, such as validation errors, resource
+
 package com.ecommerce.project.exceptions;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
