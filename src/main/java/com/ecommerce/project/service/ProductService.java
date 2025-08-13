@@ -1,8 +1,8 @@
 package com.ecommerce.project.service;
 
-import java.io.IOException;
+//import java.io.IOException;
 
-import org.springframework.web.multipart.MultipartFile;
+//import org.springframework.web.multipart.MultipartFile;
 
 import com.ecommerce.project.model.Product;
 import com.ecommerce.project.payload.ProductDTO;

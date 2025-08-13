@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ecommerce.project.model.Category;
 import com.ecommerce.project.model.Product;
 
-import jakarta.persistence.Id;
+//import jakarta.persistence.Id;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
