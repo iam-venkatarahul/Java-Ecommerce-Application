@@ -11,6 +11,7 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "role_id")
 	private Integer roleId;
 	
 	@Enumerated(EnumType.STRING)
@@ -21,10 +22,4 @@ public class Role {
 		super();
 		this.roleName = roleName;
 	}
-	
-	
-	
-	
-	
-	
 }
