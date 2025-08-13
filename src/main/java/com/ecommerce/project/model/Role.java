@@ -1,0 +1,30 @@
+package com.ecommerce.project.model;
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "roles")
+@Data
+@NoArgsConstructor
+public class Role {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer roleId;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(length = 20 , name ="role_name" )
+	private AppRole roleName;
+
+	public Role(AppRole roleName) {
+		super();
+		this.roleName = roleName;
+	}
+	
+	
+	
+	
+	
+	
+}

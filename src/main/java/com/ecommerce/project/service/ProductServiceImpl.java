@@ -40,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
 		return modelmapper.map(savedproduct , ProductDTO.class);
 	}
 
+	
 	@Override
 	public ProductResponse getAllProducts() {
 		List<Product> products = productrepo.findAll();
@@ -101,17 +102,17 @@ public class ProductServiceImpl implements ProductService {
 	        return modelmapper.map(product, ProductDTO.class);
 	    }
 	
-	 @Override
-	 public ProductDTO updateProductImage(Long productId, MultipartFile image) throws IOException {
-	        Product productFromDb = productrepo.findById(productId)
-	                .orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
-
-	        String fileName = fileService.uploadImage(path, image);
-	        productFromDb.setImage(fileName);
-
-	        Product updatedProduct = productrepo.save(productFromDb);
-	        return modelmapper.map(updatedProduct, ProductDTO.class);
-	    }
+//	 @Override
+//	 public ProductDTO updateProductImage(Long productId, MultipartFile image) throws IOException {
+//	        Product productFromDb = productrepo.findById(productId)
+//	                .orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
+//
+//	        String fileName = fileService.uploadImage(path, image);
+//	        productFromDb.setImage(fileName);
+//
+//	        Product updatedProduct = productrepo.save(productFromDb);
+//	        return modelmapper.map(updatedProduct, ProductDTO.class);
+//	    }
 	
 	
 	
