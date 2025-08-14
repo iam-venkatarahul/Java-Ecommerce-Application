@@ -3,8 +3,6 @@ package com.ecommerce.project.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-
-
 @Entity
 @Data
 @NoArgsConstructor
@@ -25,5 +23,9 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name ="category_id")
 	private Category category;
+
+	@ManyToOne
+	@JoinColumn(name = "seller_id")	
+	private User user;
 	
 }
