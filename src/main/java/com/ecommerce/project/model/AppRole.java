@@ -4,5 +4,4 @@ public enum AppRole {
 	Role_USER,
 	Role_Seller,
 	Role_Admin
-
 }

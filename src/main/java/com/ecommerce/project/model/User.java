@@ -6,19 +6,22 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import org.apache.commons.lang3.builder.ToStringExclude;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users" , uniqueConstraints = {
         @UniqueConstraint(columnNames = "username"),
-        @UniqueConstraint(columnNames = "email")
-})
+        @UniqueConstraint(columnNames = "email")})
 @Data
 @NoArgsConstructor
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -60,6 +63,7 @@ public class User {
         this.roles = roles;
     }
     
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST , CascadeType.MERGE}, orphanRemoval = true)
     private Set<Product> products;
 
