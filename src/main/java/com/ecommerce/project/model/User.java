@@ -4,69 +4,80 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang3.builder.ToStringExclude;
+//import org.apache.commons.lang3.builder.ToStringExclude;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users" , uniqueConstraints = {
-        @UniqueConstraint(columnNames = "username"),
-        @UniqueConstraint(columnNames = "email")})
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@ToString
+@Table(name = "users",
+        uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username"),
+        @UniqueConstraint(columnNames = "email")
+        })
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Integer userId;
+    private Long userId;
 
     @NotBlank
-    @Size(min = 3, max = 20)
-    private String username;
-    
+    @Size(max = 20)
+    @Column(name = "username")
+    private String userName;
+
     @NotBlank
-    @Size(min = 6, max = 120)    
-    private String password;
-    
-    @NotBlank   
-    @Size(min = 3, max = 20)
+    @Size(max = 50)
     @Email
+    @Column(name = "email")
     private String email;
 
-    public User(@NotBlank @Size(min = 3, max = 20) String username, @NotBlank @Size(min = 6, max = 120) String password,
-            @NotBlank @Size(min = 3, max = 20) @Email String email) {
-        this.username = username;
-        this.password = password;
+    @NotBlank
+    @Size(max = 120)
+    @Column(name = "password")
+    private String password;
+
+    public User(String userName, String email, String password) {
+        this.userName = userName;
         this.email = email;
+        this.password = password;
     }
 
-    @ManyToMany(cascade = {CascadeType.PERSIST , CascadeType.MERGE}, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @Setter
+    @Getter
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+                fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+                joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    
-    public Set<Role> getRoles() {
-        return roles;
-    }
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+//    @JoinTable(name = "user_address",
+//                joinColumns = @JoinColumn(name = "user_id"),
+//                inverseJoinColumns = @JoinColumn(name = "address_id"))
+    private List<Address> addresses = new ArrayList<>();
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-    
+    // @ToString.Exclude
+    // @OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    // private Cart cart;
+
     @ToString.Exclude
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST , CascadeType.MERGE}, orphanRemoval = true)
+    @OneToMany(mappedBy = "user",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            orphanRemoval = true)
     private Set<Product> products;
-
-    
-
 }

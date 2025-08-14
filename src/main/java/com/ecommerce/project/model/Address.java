@@ -3,7 +3,7 @@ package com.ecommerce.project.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.builder.ToStringExclude;
+//import org.apache.commons.lang3.builder.ToStringExclude;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -19,61 +19,45 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
 
     @NotBlank
-    @Size(min = 2, max = 100, message = "Street must be between 2 and 10 characters")
+    @Size(min = 5, message = "Street name must be atleast 5 characters")
     private String street;
 
     @NotBlank
-    @Size(min = 2, max = 50, message = "City must be between 2 and 50 characters")
-    private String city;  
+    @Size(min = 5, message = "Building name must be atleast 5 characters")
+    private String buildingName;
 
     @NotBlank
-    @Size(min = 2, max = 50, message = "State must be between 2 and 50 characters")
-    @Column(name = "state")
+    @Size(min = 4, message = "City name must be atleast 4 characters")
+    private String city;
+
+    @NotBlank
+    @Size(min = 2, message = "State name must be atleast 2 characters")
     private String state;
 
     @NotBlank
-    @Size(min = 2, max = 20, message = "Zip code must be between 2 and 20 characters")
-    @Column(name = "zip_code")
-    private String zipCode;
-
-    @NotBlank
-    @Size(min = 2, max = 50, message = "Country must be between 2 and 50 characters")
-    @Column(name = "country")
+    @Size(min = 2, message = "Country name must be atleast 2 characters")
     private String country;
 
     @NotBlank
-    @Size(min = 10, max = 15, message = "Phone number must be between 10 and 15 characters")    
-    @Column(name = "phone_number")
-    @Pattern(regexp = "^[0-9]+$", message = "Phone number must contain only digits")
-    private String phoneNumber;
+    @Size(min = 5, message = "Pincode must be atleast 5 characters")
+    private String pincode;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST , CascadeType.MERGE})
-    @JoinTable(name = "user_addresses",
-               joinColumns = @JoinColumn(name = "address_id"),
-               inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private List<Address> addresses = new ArrayList<>();
-
-
-    @ToString.Exclude
-    @OneToMany(mappedBy = "addresses")
-    private List<User> users = new ArrayList<>();
-
-    public Address(String street, String city, String state, String zipCode, String country, String phoneNumber) {
+    public Address(String street, String buildingName, String city, String state, String country, String pincode) {
         this.street = street;
+        this.buildingName = buildingName;
         this.city = city;
         this.state = state;
-        this.zipCode = zipCode;
         this.country = country;
-        this.phoneNumber = phoneNumber;
+        this.pincode = pincode;
     }
-
 }
