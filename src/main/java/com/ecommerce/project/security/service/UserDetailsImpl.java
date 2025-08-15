@@ -15,7 +15,8 @@ import com.ecommerce.project.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
 
