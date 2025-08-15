@@ -1,34 +1,39 @@
 package com.ecommerce.project.security.service;
-import com.ecommerce.project.model.Role;
-import com.ecommerce.project.model.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
+import lombok.*;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.ecommerce.project.model.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-//To connect the our user and userdetails in spring security
+@NoArgsConstructor
+@Data
 public class UserDetailsImpl implements UserDetails {
-
     private static final long serialVersionUID = 1L;
-    private Long userId;
-    private String userName;    
+
+    private Long id;
+
+    private String username;
+
     private String email;
 
     @JsonIgnore
     private String password;
+
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long userId, String userName, String email, String password,
+    public UserDetailsImpl(Long id, String username, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
-        this.userId = userId;
-        this.userName = userName;
+        this.id = id;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -46,19 +51,28 @@ public class UserDetailsImpl implements UserDetails {
                 user.getPassword(),
                 authorities);
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     @Override
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
@@ -80,4 +94,15 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        UserDetailsImpl user = (UserDetailsImpl) o;
+        return Objects.equals(id, user.id);
+    }
+
 }
