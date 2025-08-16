@@ -1,17 +1,22 @@
-package com.ecommerce.project.security;
+package com.ecommerce.project.security.response;
 
 import java.util.List;
 
-public class LoginResponse {
+// This class represents the response sent to the client after a successful user authentication.
+public class UserInfoResponse {
     
+    private Long id;
     private String jwtToken;
     private String username;
     private List<String> roles;
 
-    public LoginResponse(String username, List<String> roles, String jwtToken) {
-        this.username = username;
-        this.roles = roles;
-        this.jwtToken = jwtToken;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getJwtToken() {
@@ -35,6 +40,13 @@ public class LoginResponse {
     }
 
     public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public UserInfoResponse(Long id, String jwtToken, String username, List<String> roles) {
+        this.id = id;
+        this.jwtToken = jwtToken;
+        this.username = username;
         this.roles = roles;
     }
 }
