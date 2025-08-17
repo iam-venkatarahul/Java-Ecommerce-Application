@@ -1,6 +1,6 @@
 package com.ecommerce.project.service;
 
-public class AuthServiceImpl extends AuthService {
+public class AuthServiceImpl implements AuthService {
     
     // Implement methods for authentication logic here
     // For example, login, register, etc.
