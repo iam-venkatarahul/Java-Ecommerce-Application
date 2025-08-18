@@ -1,18 +1,15 @@
 package com.ecommerce.project.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import jakarta.persistence.*;
 
 @Entity
 @Getter
@@ -72,9 +69,9 @@ public class User {
     // @OneToOne(mappedBy = "user", cascade = { CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     // private Cart cart;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "user",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            orphanRemoval = true)
-    private Set<Product> products;
+    // @ToString.Exclude
+    // @OneToMany(mappedBy = "user",
+    //         cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+    //         orphanRemoval = true)
+    // private Set<Product> products;
 }

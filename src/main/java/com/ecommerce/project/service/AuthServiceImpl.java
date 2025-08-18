@@ -4,8 +4,7 @@ import com.ecommerce.project.model.AppRole;
 import com.ecommerce.project.model.Role;
 import com.ecommerce.project.model.User;
 import com.ecommerce.project.payload.AuthenticationResult;
-import com.ecommerce.project.repository.RoleRepository;
-import com.ecommerce.project.repository.UserRepository;
+import com.ecommerce.project.repository.*;
 import com.ecommerce.project.security.jwt.JwtUtils;
 import com.ecommerce.project.security.request.LoginRequest;
 import com.ecommerce.project.security.request.SignUpRequest;
@@ -74,7 +73,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public ResponseEntity<MessageResponse> register(SignUpRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+        if (userRepository.existsByUserName(signUpRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
         }
 
