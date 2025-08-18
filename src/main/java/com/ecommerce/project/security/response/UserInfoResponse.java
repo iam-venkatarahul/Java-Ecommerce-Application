@@ -2,7 +2,11 @@ package com.ecommerce.project.security.response;
 
 import java.util.List;
 
-// This class represents the response sent to the client after a successful user authentication.
+/*
+ * UserInfoResponse class represents the response payload for user information.
+ * It contains fields for user ID, JWT token, username, and roles.
+ * This class represents the response sent to the client after a successful user authentication.
+ */
 public class UserInfoResponse {
     
     private Long id;

@@ -5,6 +5,11 @@ import java.util.Set;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+/*
+ * This class represents the request payload for user registration.
+ * New users can be created using this request.
+ * It contains fields for username, email, password, and roles, 
+ */
 @Data
 @Setter
 @Getter

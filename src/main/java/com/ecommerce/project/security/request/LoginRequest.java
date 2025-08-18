@@ -3,10 +3,13 @@ package com.ecommerce.project.security.request;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
-/**
- * LoginRequest class represents the request payload for user login.
+/*
+ * This represents the data sent by the user to the app while logging in.
  * It contains fields for username and password, along with validation constraints.
  */
+
+
+
 @Getter
 @Setter
 public class LoginRequest {

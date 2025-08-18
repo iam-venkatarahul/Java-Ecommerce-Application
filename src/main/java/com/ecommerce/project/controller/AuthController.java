@@ -24,6 +24,10 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
+    /*
+     * This method handles user login requests.
+     * It accepts a LoginRequest object containing the user's credentials,
+     */
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         AuthenticationResult result = authService.login(loginRequest);
@@ -32,8 +36,13 @@ public class AuthController {
                 .body(result.getResponse());
     }
 
+    /*
+     * This method handles user registration requests.
+     * It accepts a SignUpRequest object containing the user's registration details.
+     */
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         return authService.register(signUpRequest);
     }
+    
 }
