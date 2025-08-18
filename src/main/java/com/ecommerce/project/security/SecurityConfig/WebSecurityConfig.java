@@ -19,8 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.ecommerce.project.model.User;
-import com.ecommerce.project.security.AuthEntryPointJwt;
-import com.ecommerce.project.security.AuthTokenFilter;
+import com.ecommerce.project.security.jwt.AuthEntryPointJwt;
+import com.ecommerce.project.security.jwt.AuthTokenFilter;
 import com.ecommerce.project.security.service.UserDetailsServiceImpl;
 
 import io.swagger.v3.oas.models.PathItem.HttpMethod;  

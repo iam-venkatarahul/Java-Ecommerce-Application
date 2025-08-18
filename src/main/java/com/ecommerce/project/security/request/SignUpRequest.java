@@ -29,5 +29,5 @@ public class SignUpRequest {
     private String password;
 
     
-    private Set<String> roles; // Assuming roles are stored as a set of strings
+    private Set<String> Roles; // Assuming roles are stored as a set of strings
 }
