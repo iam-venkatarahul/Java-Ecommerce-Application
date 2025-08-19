@@ -85,8 +85,7 @@ public class AuthServiceImpl implements AuthService {
         User user = new User(signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
-
-        Set<String> strRoles = signUpRequest.getRoles();
+        Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
@@ -103,9 +102,9 @@ public class AuthServiceImpl implements AuthService {
 
                         break;
                     case "seller":
-                        Role modRole = roleRepository.findByRoleName(AppRole.ROLE_SELLER)
+                        Role sellerRole = roleRepository.findByRoleName(AppRole.ROLE_SELLER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(modRole);
+                        roles.add(sellerRole);
 
                         break;
                     default:
@@ -115,8 +114,9 @@ public class AuthServiceImpl implements AuthService {
                 }
             });
         }
-
+        
         user.setRoles(roles);
+        roleRepository.saveAll(roles);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }

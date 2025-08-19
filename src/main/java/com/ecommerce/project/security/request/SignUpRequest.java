@@ -11,8 +11,8 @@ import lombok.*;
  * It contains fields for username, email, password, and roles, 
  */
 @Data
-@Setter
 @Getter
+@Setter
 public class SignUpRequest {
 
     @NotBlank
@@ -29,5 +29,5 @@ public class SignUpRequest {
     private String password;
 
     
-    private Set<String> Roles; // Assuming roles are stored as a set of strings
+    private Set<String> Role; // Assuming roles are stored as a set of strings
 }
