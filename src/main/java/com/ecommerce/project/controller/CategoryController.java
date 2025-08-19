@@ -1,6 +1,14 @@
-package com.ecommerce.project.controller;
+/*
+ * CategoryController.java
+ * This class is a REST controller for managing categories in an e-commerce application.	
+ * It provides endpoints to:
+ *          1. Get all categories with pagination and sorting.
+ * 	        2. Create a new category.
+ *          3. Delete a category by its ID.
+ *          4. Update an existing category by its ID.
+ */
 
-//import java.util.List;
+package com.ecommerce.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,12 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-//import org.springframework.web.server.ResponseStatusException;
-
-//import com.ecommerce.project.model.Category;
 import com.ecommerce.project.payload.CategoryDTO;
 import com.ecommerce.project.payload.CategoryResponse;
 import com.ecommerce.project.service.CategoryService;

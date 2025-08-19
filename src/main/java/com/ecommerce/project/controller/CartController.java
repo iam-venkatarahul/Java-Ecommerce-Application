@@ -1,3 +1,16 @@
+/*
+ * CartController.java
+ * This class is a Spring REST controller that handles HTTP requests related to the shopping cart functionality.
+ * It provides endpoints for creating, updating, retrieving, and deleting cart items.
+ * Endpoints To - 
+ *        1. Create or update a cart with items(PRODUCTS)
+ *        2. Add a product to the cart  
+ *        3. Get all carts
+ *        4. Get the cart of the logged-in user
+ *        5. Update the quantity of a product in the cart
+ *        6. Delete a product from the cart
+ */
+
 package com.ecommerce.project.controller;
 
 import com.ecommerce.project.model.Cart;
@@ -5,7 +18,7 @@ import com.ecommerce.project.payload.CartDTO;
 import com.ecommerce.project.payload.CartItemDTO;
 import com.ecommerce.project.repository.CartRepository;
 import com.ecommerce.project.service.CartService;
-//import com.ecommerce.project.util.AuthUtil;
+import com.ecommerce.project.util.AuthUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
