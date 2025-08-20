@@ -2,17 +2,12 @@ package com.ecommerce.project.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.ecommerce.project.payload.AuthenticationResult;
 import com.ecommerce.project.security.request.LoginRequest;
 import com.ecommerce.project.security.request.SignUpRequest;
 import com.ecommerce.project.service.AuthService;
-
 import jakarta.validation.Valid;
-
-// import java.net.http.HttpHeaders; // Remove this import
 import org.springframework.http.HttpHeaders;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
