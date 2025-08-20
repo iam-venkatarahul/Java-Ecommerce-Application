@@ -1,3 +1,10 @@
+/*
+ * This is an Order model class for an e-commerce application.
+ * It represents an order placed by a user, containing details such as
+ * the order ID, email, order items, order date, payment information,
+ * total amount, order status, and associated address.
+ */
+
 package com.ecommerce.project.model;
 
 import jakarta.persistence.*;

@@ -1,3 +1,10 @@
+/*
+ * This is an OrderItem model class for an e-commerce application.
+ * It represents an item in an order, containing details such as
+ * the order item ID, product, order, quantity, discount,
+ */
+
+
 package com.ecommerce.project.model;
 
 import jakarta.persistence.*;
