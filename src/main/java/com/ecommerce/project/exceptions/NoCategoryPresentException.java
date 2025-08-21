@@ -14,9 +14,4 @@ public class NoCategoryPresentException extends RuntimeException{
 	public NoCategoryPresentException(String message) {
 		super(message);
 	}
-	
-	
-	
-	
-
 }
