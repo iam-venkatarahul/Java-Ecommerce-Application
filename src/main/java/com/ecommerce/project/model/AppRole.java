@@ -1,3 +1,7 @@
+/*
+ * This File contains the roles of every user
+ */
+
 package com.ecommerce.project.model;
 
 public enum AppRole {
