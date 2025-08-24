@@ -1,3 +1,8 @@
+/* 
+ * This file contains the model of user in our ecommerce project 
+*/
+
+
 package com.ecommerce.project.model;
 
 import jakarta.persistence.*;
