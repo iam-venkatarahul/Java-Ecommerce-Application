@@ -1,3 +1,8 @@
+/*
+ * This is a CartItem Repository which represents the 
+ * Every item in the shopping cart of a user
+ */
+
 package com.ecommerce.project.repository;
 
 import com.ecommerce.project.model.Cart;
